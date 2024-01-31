@@ -17,8 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin', 'reception'])->default('reception'); // Add 'role' column with default value 'reception'
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); // Add soft deletes
         });
     }
 

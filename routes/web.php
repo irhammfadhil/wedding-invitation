@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::group(['prefix' => '/'], function() {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::post('/submit-rsvp', [HomeController::class, 'index'])->name('submit-rsvp');
+});
+
+Route::group(['prefix' => '/admin'], function() {
+    Route::get('/index', [AdminController::class, 'index'])->name('index-admin');
+});
+
