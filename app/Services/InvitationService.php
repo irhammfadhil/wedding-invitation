@@ -10,4 +10,16 @@ class InvitationService extends Service
     {
         parent::__construct($repository);
     }
+    public function get_invitation_by_name($name) {
+        $fields = [
+            '*'
+        ];
+        $joins = [];
+        $conditions = [
+            ['where', 'name', '=', $name],
+        ];
+        $order_by = [];
+        $group_by = [];
+        return $this->first($fields, $joins, $conditions, $order_by, false, $group_by);
+    }
 }

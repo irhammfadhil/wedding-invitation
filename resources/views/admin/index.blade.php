@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -47,7 +48,7 @@
           <a href="/admin/index" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/logout" class="nav-link">Logout</a>
+          <a href="{{route('logout')}}" class="nav-link">Logout</a>
         </li>
       </ul>
 
@@ -57,66 +58,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        TimbalBalik.id
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="/admin/index" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>Dashboard</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class="nav-icon fas fa-shopping-bag"></i>
-                <p>Daftar Tamu</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin/orders" class="nav-link">
-                <i class="nav-icon fas fa-list"></i>
-                <p>Daftar Pesanan</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin/history-barang" class="nav-link">
-                <i class="nav-icon fas fa-history"></i>
-                <p>Riwayat Keluar/Masuk Barang</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin/inquiry" class="nav-link">
-                <i class="nav-icon fas fa-history"></i>
-                <p>Inquiry</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin/user" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>Data User</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin/redeem" class="nav-link">
-                <i class="nav-icon fas fa-gift"></i>
-                <p>Data Redeemable Item</p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
+    @include('admin.layouts.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -143,42 +85,40 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <div class="small-box bg-1">
                 <div class="inner">
-                  <h3>0</h3>
-
-                  <p>Total Undangan</p>
+                  <h5>Total Undangan</h5>
+                  <h3>{{$count_number_of_invitations}}</h3>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M473 39.05a24 24 0 0 0-25.5-5.46L47.47 185h-.08a24 24 0 0 0 1 45.16l.41.13l137.3 58.63a16 16 0 0 0 15.54-3.59L422 80a7.07 7.07 0 0 1 10 10L226.66 310.26a16 16 0 0 0-3.59 15.54l58.65 137.38c.06.2.12.38.19.57c3.2 9.27 11.3 15.81 21.09 16.25h1a24.63 24.63 0 0 0 23-15.46L478.39 64.62A24 24 0 0 0 473 39.05"/></svg>
                 </div>
-                <a href="/admin/donasi/pakaian" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('index-invitation')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
               <!-- small box -->
-              <div class="small-box bg-success">
+              <div class="small-box bg-2">
                 <div class="inner">
-                  <h3>0</h3>
-                  <p>Total Jumlah Tamu Undangan</p>
+                  <h5>Jumlah Tamu Undangan</h5>
+                  <h3>{{$count_number_of_guests}}</h3>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-person"></i>
                 </div>
-                <a href="/admin/donasi/uang" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('index-invitation')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-6">
               <!-- small box -->
-              <div class="small-box bg-info">
+              <div class="small-box bg-3">
                 <div class="inner">
+                  <h5>Total Tamu Undangan Hadir</h5>
                   <h3>0</h3>
-
-                  <p>Total Tamu Undangan Hadir</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>

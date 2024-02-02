@@ -15,7 +15,7 @@ body {
 }
 
 @media screen and (min-width: 992px) {
-  body {
+  main {
     padding-left: 20%;
     padding-right: 20%;
   }
@@ -618,17 +618,51 @@ section {
   }
 }
 
-.add-to-calendar {
-  text-align: center; 
-  background: #fff; 
-  color: #000;
-  border-color: #efbf24;
+@keyframes blink {
+  0% {
+    border-width: 2px;
+  }
+  50% {
+    border-width: 4px;
+  }
+  100% {
+    border-width: 2px;
+  }
 }
 
-.add-to-calendar:hover {
-  background: rgba(201,142,154,0.35);
+.add-to-calendar {
+  text-align: center; 
   color: #000;
+  background: rgba(201,142,154,0.35);
   border-color: rgba(201,142,154,0.35);
+  border-radius: 20px;
+}
+
+
+.add-to-calendar:hover {
+  background: #fff; 
+  color: #000;
+  border: 2px solid rgba(201,142,154,0.9);
+}
+
+
+.sqs-block-button {
+box-shadow: 0 0 0 0 rgba(88, 120, 243, 0.4);
+-moz-animation: pulse 2s infinite;
+-webkit-animation: pulse 2s infinite;
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(116, 116, 116, 0.8);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(116, 116, 116, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 50px rgba(116, 116, 116, 0);
+    }
 }
 
 .save-the-date {
@@ -662,13 +696,9 @@ section {
 .bride-nick-name {
   margin-bottom: 20px !important;
   margin-top: 20px !important;
-  max-width: 50%;
+  max-width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .bride-nick-name {
-    max-width: 100%;
-  }
-}
+
 .bride-nick-name-front {
   margin-bottom: 40px !important;
 }
@@ -714,7 +744,10 @@ section {
     font-size: 12px;
   }
 }
-
+.guest-name-box-outer {
+  padding-left: 10%;
+  padding-right: 10%;
+}
 .guest-name-box {
   padding-top: 5%;
   padding-bottom: 5%;
@@ -728,4 +761,20 @@ section {
   .wedding-date-row h1 {
     font-size: 20px;
   }
+}
+
+.container-wishes-outer {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.container-wishes {
+  padding: 30px;
+}
+
+.wedding-date {
+  font-size: calc(1rem + 1vw);
+}
+
+.flowers-1 {
+  float: left;
 }
