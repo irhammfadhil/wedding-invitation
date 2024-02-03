@@ -63,7 +63,6 @@
     }
 
     .invitation-inner {
-      padding: 20px;
       text-align: center;
       color: white; /* Change the text color to make it visible on the background */
     }
@@ -97,32 +96,32 @@
       </div>
       <br>
       <p style="font-size: 14px; color: #000;"><i>Mohon maaf apa bila ada kesalahan penulisan nama dan gelar</i></p>
-      <button id="open-popup" class="add-to-calendar btn btn-lg btn-primary button-open-invitation sqs-block-button"><i class="fas fa-envelope"></i>Buka Undangan</button>
+      <button id="open-popup" class="add-to-calendar btn btn-lg btn-primary button-open-invitation sqs-block-button btn-responsive"><i class="fas fa-envelope"></i> Buka Undangan</button>
     </div>
   </div>
   <main id="main">
     <div id="invitation">
       <section id="about" class="about section-bg" style="height: 150%;">
-        <div class="container text-center" data-aos="fade-up">
-          <h3 class="text-center save-the-date">SAVE THE DATE</h3>
-          <img class="text-center img-fluid bride-nick-name" src="{{asset('name.png')}}">
-          <h4 class="text-center wedding-date">Minggu, 14 April 2024</h4>
+        <div class="container text-center" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-center save-the-date" data-aos="zoom-in" data-aos-delay="100">SAVE THE DATE</h3>
+          <img class="text-center img-fluid bride-nick-name" src="{{asset('name.png')}}" data-aos="zoom-in" data-aos-delay="100">
+          <h4 class="text-center wedding-date" data-aos="zoom-in" data-aos-delay="100">Minggu, 14 April 2024</h4>
           <div class="row text-center box-countdown-outer">
             <div class="col-4 box-countdown mx-0">
               <div class="box-dates">
-                <h1 id="days"></h1>
+                <h1 id="days" data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="5" class="purecounter"></h1>
                 <h6>DAYS</h6>
               </div>
             </div>
             <div class="col-4 box-countdown mx-0">
               <div class="box-dates">
-                <h1 id="hours"></h1>
+                <h1 id="hours" data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="5" class="purecounter"></h1>
                 <h6>HOURS</h6>
               </div>
             </div>
             <div class="col-4 box-countdown mx-0">
               <div class="box-dates">
-                <h1 id="minutes"></h1>
+                <h1 id="minutes" data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="5" class="purecounter"></h1>
                 <h6>MINUTES</h6>
               </div>
             </div>
@@ -135,7 +134,7 @@
       </section><!-- End About Section -->
 
       <section id="ayat" class="about section-bg-2">
-        <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="zoom-in">
           <div class="text-center">
             <img src="{{asset('basmala.png')}}" class="img-fluid" style="max-width: 200px; margin-bottom: 20px !important;">
             <h4>.وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ </h4>
@@ -143,12 +142,15 @@
                 agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan diantaramu rasa kasih dan sayang.
                 Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</i></h6>
             <h6>(QS Ar Rum 21)</h6>
+            <div class="rotating-container">
+              <img src="{{asset('flowers-ayat.png')}}" class="img-fluid rotating-image">
+            </div>
           </div>
         </div>
       </section><!-- End About Section -->
 
       <section id="children" class="about section-bg">
-        <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="zoom-in">
           <div class="text-center">
             <img src="{{asset('basmala.png')}}" class="img-fluid" style="max-width: 200px; margin-bottom: 20px !important;">
             <p class="invitation-description">Maha suci Allah SWT, yang telah menciptakan makhluk-Nya berpasang-pasangan.<br><br>Ya Allah, dengan mengharap ridlo dan rahmat-Mu perkenankanlah kami menikahkan putra-putri kami:</p>
@@ -161,7 +163,7 @@
         </div>
       </section><!-- End About Section -->
       <section id="akad-event" class="about section-bg-2">
-        <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="zoom-in">
           <div class="text-center">
             <h5><i>Assalamu’alaikum Warahmatullahi Wabarokatuh</i></h5>
             @if($data_invitation->invitation_type == 'Akad')
@@ -211,7 +213,7 @@
         </div>
       </section><!-- End About Section -->
       <section id="event-location" class="about section-bg">
-        <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="zoom-in">
           <div class="text-center">
             <h3>Doa untuk pengantin</h3>
             <h4>بارَكَ اللهُ لَكَ ، وَبَارَكَ عَلَيْكَ ، وَجَمَعَ بَيْنَكُمَا فِيْ خَيْرٍ</h4>
@@ -262,7 +264,7 @@
           </div>
           <br>
           <div class="container-wishes-outer">
-            <div class="container-wishes" id="container-wishes">
+            <div class="container-wishes overflow-auto" id="container-wishes">
               @foreach($rsvps as $rsvp)
               <p><b>{{$rsvp->invitation->name}}</b></p>
               <small>{{ \Carbon\Carbon::parse($rsvp->created_at)->diffForHumans() }}</small>
@@ -371,10 +373,9 @@
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-        document.getElementById("days").textContent = days.toString().padStart(2, "0");
-        document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-        document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-        document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+        document.getElementById("days").setAttribute("data-purecounter-end", days);
+        document.getElementById("hours").setAttribute("data-purecounter-end", hours);
+        document.getElementById("minutes").setAttribute("data-purecounter-end", minutes);
       }
 
       // Update the countdown initially and then every second
