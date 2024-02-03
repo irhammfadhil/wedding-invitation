@@ -5,41 +5,33 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Wedding Irham & Rosy</title>
+  <title>Mentor Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{asset('assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="sakura.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- =======================================================
-  * Template Name: Mentor
-  * Updated: Jan 09 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   <style>
     #invitation-popup {
       position: fixed;
@@ -76,11 +68,17 @@
       }
     }
   </style>
+  <!-- =======================================================
+  * Template Name: Mentor
+  * Updated: Jan 09 2024 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
-
-  <div id="invitation-popup" class="text-center">
+  {{--<div id="invitation-popup" class="text-center">
     <div class="invitation-inner">
       <h1 style="color: #000;">Undangan Pernikahan</h1>
       <br>
@@ -98,10 +96,11 @@
       <p style="font-size: 14px; color: #000;"><i>Mohon maaf apa bila ada kesalahan penulisan nama dan gelar</i></p>
       <button id="open-popup" class="add-to-calendar btn btn-lg btn-primary button-open-invitation sqs-block-button btn-responsive"><i class="fas fa-envelope"></i> Buka Undangan</button>
     </div>
-  </div>
+  </div>--}}
   <main id="main">
-    <div id="invitation">
-      <section id="about" class="about section-bg" style="height: 150%;">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg" style="height: 150%;">
         <div class="container text-center" data-aos="zoom-in" data-aos-delay="200">
           <h3 class="text-center save-the-date" data-aos="zoom-in" data-aos-delay="100">SAVE THE DATE</h3>
           <img class="text-center img-fluid bride-nick-name" src="{{asset('name.png')}}" data-aos="zoom-in" data-aos-delay="100">
@@ -132,7 +131,6 @@
           </div>
         </div>
       </section><!-- End About Section -->
-
       <section id="ayat" class="about section-bg-2">
         <div class="container" data-aos="zoom-in">
           <div class="text-center">
@@ -274,24 +272,20 @@
             </div>
           </div>
         </div>
-    </div>
-    <!-- ======= About Section ======= -->
+      </section>
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Vendor JS Files -->
-    <script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-    <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
-    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    <script src="a{{asset('ssets/vendor/php-email-form/validate.js')}}"></script>
-
-    <script src="sakura.js" text="text/javascript"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{{asset('assets/js/main.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script>
       /*const sakura = new Sakura('body', {
         colors: [
@@ -305,11 +299,11 @@
     </script>
     <script>
       $(document).ready(function() {
-        $("#invitation").hide();
+        $("#main").show();
         $("#open-popup").click(function(e) {
           //sakura.stop();
           $("#invitation-popup").hide();
-          $("#invitation").show();
+          $("#main").show();
           $('html, body').animate({
             scrollTop: $("#about").offset().top
           }, 0);
@@ -382,7 +376,6 @@
       updateCountdown();
       setInterval(updateCountdown, 1000);
     </script>
-
 </body>
 
 </html>
