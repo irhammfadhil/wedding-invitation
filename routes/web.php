@@ -19,6 +19,7 @@ use App\Http\Controllers\UserController;
 Route::group(['prefix' => '/'], function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/{name}', [HomeController::class, 'get_invitation_by_name'])->name('invitation-uuid');
+    Route::get('/{name}/open', [HomeController::class, 'open_invitation'])->name('invitation-uuid-open');
     Route::post('/user/submit-rsvp', [HomeController::class, 'saveRsvps'])->name('submit-rsvp');
     Route::get('/user/get-rsvp', [HomeController::class, 'getAllRsvps'])->name('get-rsvp');
 });

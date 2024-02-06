@@ -1,0 +1,17 @@
+/* Initial state for both elements */
+#a,
+#b,
+#c,
+#d,
+#e {
+    opacity: 0;
+    /* Ensure elements are invisible initially */
+    transition: opacity 2s ease-in-out;
+    /* Smooth transition for the fade-in effect */
+}
+
+/* Class to trigger the fade-in animation */
+.fade-in {
+    opacity: 1 !important;
+    /* Override the initial opacity to fade in */
+}

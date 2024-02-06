@@ -26,6 +26,21 @@ class HomeController extends Controller
     }
     public function get_invitation_by_name($name) {
         try {
+            $data_invitation = $this->invitation_service->get_invitation_by_name($name);
+            if($data_invitation) {
+                $name = $data_invitation->name;
+                return view('index', compact('data_invitation', 'name'));
+            }
+            else {
+                abort(404);
+            }
+        }
+        catch (Exception $e) {
+            abort(404);
+        }
+    }
+    public function open_invitation($name) {
+        try {
             $event = [
                 'title' => 'Irham Rosy Wedding',
                 'start' => '20240414T110000',
@@ -44,7 +59,7 @@ class HomeController extends Controller
             $data_invitation = $this->invitation_service->get_invitation_by_name($name);
             if($data_invitation) {
                 $rsvps = $this->rsvp_service->get_all_rsvps();
-                return view('index', compact('googleCalendarUrl', 'data_invitation', 'rsvps'));
+                return view('main', compact('googleCalendarUrl', 'data_invitation', 'rsvps'));
             }
             else {
                 abort(404);
