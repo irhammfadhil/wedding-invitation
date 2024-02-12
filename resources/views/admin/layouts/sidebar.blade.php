@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{route('index-attendance')}}" class="nav-link{{ request()->routeIs('index-attendance') ? ' nav-active' : '' }}">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Daftar Kehadiran</p>
                     </a>
@@ -68,6 +68,9 @@
     }
     .bg-3 {
         background-color: rgba(66, 77, 66, 0.3);
+    }
+    .bg-4 {
+        background-color: #e2a55e;
     }
     .page-item.active .page-link {
         background-color: #b55b5b;

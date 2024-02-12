@@ -9,6 +9,8 @@ class Attendance extends Model
 {
     use SoftDeletes;
 
+    public $table = 'attendance';
+
     protected $fillable = [
         'invitation_id',
         'number_of_guests',

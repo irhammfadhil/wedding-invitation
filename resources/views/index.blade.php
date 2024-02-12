@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>{{env('APP_NAME')}}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,9 +36,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{asset('sakura.css')}}">
   <style>
     #invitation-popup {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
@@ -102,7 +103,7 @@
         </div>
       </div>
       <br>
-      <p style="font-size: 14px; color: #000;"><i>Mohon maaf apa bila ada kesalahan penulisan nama dan gelar</i></p>
+      <p style="font-size: 14px; color: #000;"><i>Mohon maaf apabila ada kesalahan penulisan nama dan gelar</i></p>
       <a href="{{route('invitation-uuid-open', ['name' => $name])}}" id="open-popup"
         class="add-to-calendar btn btn-lg btn-primary button-open-invitation sqs-block-button btn-responsive"><i
           class="fas fa-envelope"></i> Buka Undangan</a>
@@ -122,17 +123,10 @@
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>
   <script src="{{asset('assets/js/animation.js')}}"></script>
+  <script src="{{asset('sakura.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
   <script>
-    /*const sakura = new Sakura('body', {
-      colors: [
-          {
-              gradientColorStart: 'rgba(255,255,255,1.0)',
-              gradientColorEnd: 'rgba(255,255,255,1.0)',
-              gradientColorDegree: 120,
-          },
-      ],
-    });*/
+    const sakura = new Sakura('body');
   </script>
   <script>
     // When the form is submitted

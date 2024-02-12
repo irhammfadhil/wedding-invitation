@@ -321,36 +321,30 @@
   <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
 
   <script>
-    $(function() {
-      $("#example1").DataTable();
-    });
-  </script>
-  <script>
     $(document).ready(function() {
-      $('.edit-button').on('click', function() {
-        var id = $(this).data('id');
-        var url = "{{ route('view-invitation', [':id']) }}";
-        url = url.replace(':id', id);
-        // Send an AJAX GET request to retrieve the record data
-        console.log(url)
-        $.ajax({
-          type: 'GET',
-          url: url,
-          dataType: 'json',
-          success: function(data) {
-            // Populate the modal's form fields with the data from the response
-            $('#id-edit').val(data.data.id);
-            $('#uuid-edit').val(data.data.uuid);
-            $('#name-edit').val(data.data.name);
-            $('#address-edit').val(data.data.address);
-            $('#phone-edit').val(data.data.phone);
-            $('#invitation-type-edit').val(data.data.invitation_type);
-            $('#num_of_guests-edit').val(data.data.num_of_guests);
-          },
-          error: function() {
-            alert('Error fetching data'); // Handle errors if needed
-          }
-        });
+      var table = $('#example1').DataTable(); // Initialize DataTable
+      // Event delegation for edit button
+      $('#example1').on('click', '.edit-button', function() {
+          var id = $(this).data('id');
+          var url = "{{ route('view-invitation', [':id']) }}".replace(':id', id);
+          
+          $.ajax({
+              type: 'GET',
+              url: url,
+              dataType: 'json',
+              success: function(data) {
+                  $('#id-edit').val(data.data.id);
+                  $('#uuid-edit').val(data.data.uuid);
+                  $('#name-edit').val(data.data.name);
+                  $('#address-edit').val(data.data.address);
+                  $('#phone-edit').val(data.data.phone);
+                  $('#invitation-type-edit').val(data.data.invitation_type);
+                  $('#num_of_guests-edit').val(data.data.num_of_guests);
+              },
+              error: function() {
+                  alert('Error fetching data');
+              }
+          });
       });
       $('.whatsappButton').on('click', function(event) {
         event.preventDefault();

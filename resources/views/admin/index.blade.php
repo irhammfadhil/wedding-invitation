@@ -27,6 +27,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-B8WC1ep/pk4pcwYf9KVp1JDUS6Z4GpU8njMlIQ2sd+geRmT65voW6o43l5VPlZyDgolHHmwZQ1fRIlRuc5eBfw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -89,7 +90,7 @@
               <!-- small box -->
               <div class="small-box bg-1">
                 <div class="inner">
-                  <h5>Total Undangan</h5>
+                  <h5>Total Undangan Terkirim</h5>
                   <h3>{{$count_number_of_invitations}}</h3>
                 </div>
                 <div class="icon">
@@ -98,34 +99,72 @@
                 <a href="{{route('index-invitation')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-4 col-md-6">
               <!-- small box -->
-              <div class="small-box bg-2">
+              <div class="small-box bg-1">
                 <div class="inner">
-                  <h5>Jumlah Tamu Undangan</h5>
-                  <h3>{{$count_number_of_guests}}</h3>
+                  <h5>Total Tamu Akad</h5>
+                  <h3>{{$count_number_of_akad_guests}}</h3>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person"></i>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M473 39.05a24 24 0 0 0-25.5-5.46L47.47 185h-.08a24 24 0 0 0 1 45.16l.41.13l137.3 58.63a16 16 0 0 0 15.54-3.59L422 80a7.07 7.07 0 0 1 10 10L226.66 310.26a16 16 0 0 0-3.59 15.54l58.65 137.38c.06.2.12.38.19.57c3.2 9.27 11.3 15.81 21.09 16.25h1a24.63 24.63 0 0 0 23-15.46L478.39 64.62A24 24 0 0 0 473 39.05"/></svg>
                 </div>
                 <a href="{{route('index-invitation')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
+            <div class="col-lg-4 col-md-6">
+              <!-- small box -->
+              <div class="small-box bg-1">
+                <div class="inner">
+                  <h5>Total Tamu Resepsi</h5>
+                  <h3>{{$count_number_of_akad_guests + $count_number_of_guests}}</h3>
+                </div>
+                <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M473 39.05a24 24 0 0 0-25.5-5.46L47.47 185h-.08a24 24 0 0 0 1 45.16l.41.13l137.3 58.63a16 16 0 0 0 15.54-3.59L422 80a7.07 7.07 0 0 1 10 10L226.66 310.26a16 16 0 0 0-3.59 15.54l58.65 137.38c.06.2.12.38.19.57c3.2 9.27 11.3 15.81 21.09 16.25h1a24.63 24.63 0 0 0 23-15.46L478.39 64.62A24 24 0 0 0 473 39.05"/></svg>
+                </div>
+                <a href="{{route('index-invitation')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <!-- small box -->
+              <div class="small-box bg-2">
+                <div class="inner">
+                  <h5>Total Undangan Yang Sudah Konfirmasi</h5>
+                  <h3>{{$count_number_of_confirmed_invitations}}</h3>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-check"></i>
+                </div>
+                <a href="{{route('index-rsvp')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
             <div class="col-lg-4 col-md-6">
               <!-- small box -->
               <div class="small-box bg-3">
                 <div class="inner">
-                  <h5>Total Tamu Undangan Hadir</h5>
-                  <h3>0</h3>
+                  <h5>Total Tamu Yang Sudah Konfirmasi</h5>
+                  <h3>{{$count_number_of_confirmed_guests}}</h3>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-person"></i>
                 </div>
-                <a href="/admin/donasi/sewing" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('index-rsvp')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+            <div class="col-lg-4 col-md-6">
+              <!-- small box -->
+              <div class="small-box bg-4">
+                <div class="inner">
+                  <h5>Total Undangan Belum Konfirmasi</h5>
+                  <h3>{{$count_number_of_invitations - $count_number_of_confirmed_invitations}}</h3>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-question-circle"></i>
+                </div>
+                <a href="{{route('index-rsvp')}}" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
           </div>
         </div>
         <!-- /.row (main row) -->

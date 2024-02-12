@@ -33,10 +33,15 @@ Route::group(['prefix' => '/admin'], function() {
         Route::put('/edit', [AdminController::class, 'submitEditInvitation'])->name('submit-edit-invitation');
         Route::delete('/delete/{id}', [AdminController::class, 'deleteInvitation'])->name('delete-invitation');
         Route::get('/mark-as-sent/{id}', [AdminController::class, 'markInvitaitonAsSent'])->name('mark-invitation-as-sent');
+        Route::post('/check', [AdminController::class, 'checkGuests'])->name('check-invitation');
+    
     });
     Route::prefix('rsvp')->middleware('auth')->group(function () {
         Route::get('/', [AdminController::class, 'getAllRsvps'])->name('index-rsvp');
     });
+    Route::get('/attendance', [AdminController::class, 'getAttendanceList'])->name('index-attendance');
+    Route::get('/attendance/submit', [AdminController::class, 'insertAttendance'])->name('submit-attendance');
+    Route::get('/attendance/gift/{id}', [AdminController::class, 'markSouvenirHaveTaken'])->name('attendance-gift');
     Route::get('/login', [UserController::class, 'getLogin'])->name('login');
     Route::post('/login', [UserController::class, 'doLogin'])->name('submit-login');
     Route::post('/register', [UserController::class, 'register'])->name('submit-register');

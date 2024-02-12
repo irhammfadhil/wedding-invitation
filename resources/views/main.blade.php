@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>{{env('APP_NAME')}}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -53,9 +53,9 @@
     /* New CSS for the flowers-top-1 div */
     #flowers-top-1 {
       position: absolute;
-      left: -10%;
-      top: 80%;
-      z-index: 0;
+      left: -12%;
+      top: 67%;
+      z-index: 1;
       width: 500px;
       /* Ensure it's above the content in #about */
     }
@@ -76,6 +76,8 @@
     @media screen and (max-width: 512px) {
       #flowers-top-1 {
         width: 300px;
+        left: -20%;
+        top: 75%;
       }
 
       #flowers-top-2 {
@@ -86,7 +88,7 @@
     }
 
     #flowers-top-2 img {
-      animation: rotate-animation 5s linear infinite;
+      animation: rotate-animation 12s linear infinite;
     }
 
     /* For container Name */
@@ -109,7 +111,7 @@
 
     #flowers-name-top-2 {
       position: absolute;
-      left: 84%;
+      left: 88%;
       top: 60%;
       z-index: 1;
       width: 400px;
@@ -243,7 +245,10 @@
         <img src="{{asset('flowers-save-the-date-2.png')}}" class="img-fluid" style="max-width: 50%;">
       </div>
     </section><!-- End About Section -->
-    <section id="ayat" class="about section-bg-2">
+    <div id="image-container-top">
+      <img src="{{asset('container-top-image.png')}}" class="img-fluid" style="width: 100%;">
+    </div>
+    <section id="ayat" class="about section-bg-3">
       <div class="container">
         <div class="text-center">
           <img src="{{asset('basmala.png')}}" class="img-fluid"
@@ -263,6 +268,9 @@
         </div>
       </div>
     </section><!-- End About Section -->
+    <div id="image-container-bottom">
+      <img src="{{asset('container-bottom-image.png')}}" class="img-fluid" style="width: 100%;">
+    </div>
     <div id="image-container-top">
       <img src="{{asset('container-top-image.png')}}" class="img-fluid" style="width: 100%;">
     </div>
@@ -344,34 +352,29 @@
             Sabrangan, Mulyorejo<br>Surabaya</p>
           <div class="text-center" style="margin-bottom: 3rem;" data-aos="zoom-in" data-aos-delay="1000">
             <a href="https://maps.app.goo.gl/84sbSk9HwqU91ds97" target="_blank"
-              class="btn btn-primary text-center add-to-calendar">Menuju Lokasi</a>
+              class="btn btn-primary text-center add-to-calendar-v2">Menuju Lokasi</a>
           </div>
-          <iframe data-aos="zoom-in" data-aos-delay="1250" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15830.591847361991!2d112.7703437!3d-7.2808363!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa33f5036057%3A0x871babfe64e1d010!2sSwiss-Belinn%20Manyar%20Surabaya!5e0!3m2!1sen!2sid!4v1707206642638!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          
+          <div class="map-container" data-aos="zoom-in" data-aos-delay="1250">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15830.591847361991!2d112.7703437!3d-7.2808363!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa33f5036057%3A0x871babfe64e1d010!2sSwiss-Belinn%20Manyar%20Surabaya!5e0!3m2!1sen!2sid!4v1707218839548!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
           <p style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="1500">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
             Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada putra-putri kami.</p>
           <p data-aos="zoom-in" data-aos-delay="1750">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
           <p class="small" style="color: #000;" data-aos="zoom-in" data-aos-delay="2000">Kami yang berbahagia</p>
           <p class="small" data-aos="zoom-in" data-aos-delay="2250" class="bride-full-name"><i>Kel. R. Sri Kuncoro Laksono
-              Wedi<br>Kel.H.R. Soenardjo, S.H (Alm)<br>Irham dan Rosy</i></p>
+              Wedi<br>Kel. H.R. Soenardjo, S.H (Alm)<br>Irham dan Rosy</i></p>
         </div>
       </div>
     </section><!-- End About Section -->
     <div id="image-container-bottom">
       <img src="{{asset('container-bottom-image.png')}}" class="img-fluid" style="width: 100%;">
     </div>
-    <section id="event-location" class="about section-bg">
+    <section id="event-location" class="about section-bg" style="margin-top: -3rem;">
       <div class="container">
-        <div class="text-center paragraph" data-aos="zoom-in">
-          <h5>Doa untuk pengantin</h5>
-          <h4>بارَكَ اللهُ لَكَ ، وَبَارَكَ عَلَيْكَ ، وَجَمَعَ بَيْنَكُمَا فِيْ خَيْرٍ</h4>
-          <h6 style="margin-bottom: 20px;"><i>Semoga Allah memberkahimu ketika bahagia dan ketika susah dan mengumpulkan
-              kalian berdua dalam kebaikan.” (HR. Abu Daud)</i></h6>
-          <hr class="custom-hr">
-          <br>
-          <h5>Ucapkan Sesuatu</h5>
+        <div class="text-center paragraph" data-aos="zoom-in" data-aos-delay="2500">
+          <h5>Konfirmasi Kehadiran</h5>
         </div>
-        <form id="rsvp-form" action="{{route('submit-rsvp')}}" method="post" data-aos="zoom-in" data-aos-delay="250">
+        <form id="rsvp-form" action="{{route('submit-rsvp')}}" method="post" data-aos="zoom-in" data-aos-delay="2750">
           @csrf
           <input type="hidden" name="invitation_id" value="{{$data_invitation->id}}">
           <div class="form-group">
@@ -394,9 +397,12 @@
           <br>
           <div class="form-group">
             <label for="name">Jumlah Tamu yang hadir (termasuk Anda)?</label>
-            
-            <input type="number" class="form-control" id="number_of_guest" name="num_of_guests"
-              aria-describedby="emailHelp" placeholder="Jumlah Tamu" max="{{$data_invitation->num_of_guests}}" required>
+            <select id="number_of_guest" name="num_of_guests" class="form-control" required>
+              <option value="">Pilih...</option>
+              @for($i=1;$i<=10;$i++)
+              <option value="{{$i}}">{{$i}} tamu</option>
+              @endfor
+            </select>
           </div>
           <br>
           <div class="form-group">
@@ -405,18 +411,26 @@
           </div>
           <br>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary add-to-calendar">Kirim</button>
+            <button type="submit" class="btn btn-primary add-to-calendar" style="color: #fff; background: rgb(201,142,154); border-color: rgb(201,142,154);">Kirim</button>
           </div>
         </form>
-        <br>
-        <hr class="custom-hr" data-aos="zoom-in" data-aos-delay="500">
-        <br>
-        <div class="text-center" data-aos="zoom-in" data-aos-delay="750">
-          <h3>Ucapan</h3>
+        <br><br>
+        <div class="text-center" data-aos="zoom-in">
+          <h5>Doa untuk pengantin</h5>
+          <h4>بارَكَ اللهُ لَكَ ، وَبَارَكَ عَلَيْكَ ، وَجَمَعَ بَيْنَكُمَا فِيْ خَيْرٍ</h4>
+          <h6 style="margin-bottom: 20px;"><i>Semoga Allah memberkahimu ketika bahagia dan ketika susah dan mengumpulkan
+              kalian berdua dalam kebaikan.” (HR. Abu Daud)</i></h6>
+          <br>
         </div>
         <br>
-        <div class="container-wishes-outer" data-aos="zoom-in" data-aos-delay="1000">
-          <div class="container-wishes overflow-auto paragraph" id="container-wishes">
+        <hr class="custom-hr" style="opacity: 0.25;" data-aos="zoom-in" data-aos-delay="3250">
+        <br>
+        <div class="text-center" data-aos="zoom-in" data-aos-delay="3500">
+          <h5>Ucapan dan Doa</h5>
+        </div>
+        <br>
+        <div class="container-wishes-outer" data-aos="zoom-in" data-aos-delay="3750">
+          <div class="container-wishes overflow-auto paragraph-wishes" id="container-wishes" style="max-height: 512px; overflow: auto;">
             @foreach($rsvps as $rsvp)
             <p><b>{{$rsvp->invitation->name}}</b></p>
             <small>{{ \Carbon\Carbon::parse($rsvp->created_at)->diffForHumans() }}</small>
@@ -426,12 +440,15 @@
           </div>
         </div>
       </div>
+      <div class="text-center" style="margin-top: 1rem;">
+        <small class="text-center">Designed by Irham M Fadhil.</small>
+      </div>
     </section>
   </main>
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-  <a href="#" class="stop-audio d-flex align-items-center justify-content-center active"><i class="fas fa-stop"></i></a>
+  <a href="javascript:void(0)" class="stop-audio d-flex align-items-center justify-content-center active"><i class="fas fa-volume-xmark"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
@@ -460,11 +477,11 @@
       if (isAudioPlaying) {
         audioElement.pause(); // Pause the audio
         audioElement.currentTime = 0; // Rewind to the beginning
-        stopAudioButton.innerHTML = '<i class="fas fa-play"></i>'; // Change the button to a "Play" icon
+        stopAudioButton.innerHTML = '<i class="fas fa-volume-high"></i>'; // Change the button to a "Play" icon
         isAudioPlaying = false;
       } else {
         audioElement.play(); // Start playing the audio
-        stopAudioButton.innerHTML = '<i class="fas fa-stop"></i>'; // Change the button back to a "Stop" icon
+        stopAudioButton.innerHTML = '<i class="fas fa-volume-xmark"></i>'; // Change the button back to a "Stop" icon
         isAudioPlaying = true;
       }
     });
