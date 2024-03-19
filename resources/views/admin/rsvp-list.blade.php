@@ -105,6 +105,7 @@
                   <thead>
                     <tr>
                       <th class="text-center align-middle">Nama</th>
+                      <th class="text-center align-middle">PIC</th>
                       <th class="text-center align-middle">Timestamp</th>
                       <th class="text-center align-middle">Kehadiran</th>
                       <th class="text-center align-middle">Jumlah Tamu</th>
@@ -115,6 +116,7 @@
                     @foreach ($rsvps as $rsvp)
                     <tr>
                       <td>{{$rsvp->invitation->name}}</td>
+                      <td>{{$rsvp->invitation->user->name}}</td>
                       <td>{{$rsvp->created_at}}</td>
                       <td>
                         @if($rsvp->response == 'Yes')

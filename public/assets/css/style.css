@@ -692,6 +692,21 @@ section {
   border: 2px solid rgba(201, 142, 154, 0.9);
 }
 
+.add-to-calendar-2 {
+    text-align: center;
+    margin-top: 2vh !important;
+    color: #000;
+    background: #fff;
+    border-color: #000;
+    border-radius: 20px;
+}
+
+.add-to-calendar-2:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid rgba(201,142,154,0.9);
+}
+
 .add-to-calendar-v2 {
   text-align: center;
   color: #fff;
@@ -831,6 +846,21 @@ section {
 }
 
 .guest-name-box {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.guest-name-box h3 {
+    font-size: calc(0.75rem + 0.5vw);
+}
+
+@media screen and (max-width: 768px){
+    .guest-name-box h3 {
+        font-size: calc(0.9rem + 0.5vw);
+    }
+}
+
+.guest-name-box {
   padding-top: 5%;
   padding-bottom: 5%;
   background-color: rgba(201, 142, 154, 0.35);
@@ -886,14 +916,19 @@ section {
   }
 }
 
+.bride-nick-name-front {
+    max-width: 50%;
+}
+
 @media screen and (max-width: 512px) {
   .bride-nick-name-front {
-    max-width: 80%;
+    max-width: 95%;
   }
   .wedding-date {
     margin-bottom: 20px !important;
   }
 }
+
 
 @keyframes fadeIn {
   from {
@@ -1001,4 +1036,40 @@ input[type=radio]:checked {
   .container-footer {
     margin-top: 1rem;
   }
+}
+
+.date-image {
+    max-width: 40%;
+}
+.date-image-2 {
+    max-width: 60%;
+}
+@media screen and (max-width: 512px) {
+    .date-image {
+        max-width: 80%;
+    }
+    .date-image-2 {
+        max-width: 120%;
+    }
+}
+@media screen and (max-width: 992px) {
+    .pc-view-date {
+        display: none;
+    }
+    .mobile-view-date {
+        display: block;
+    }
+}
+@media screen and (min-width: 992px) {
+    .pc-view-date {
+        display: block;
+    }
+    .mobile-view-date {
+        display: none;
+    }
+}
+@media screen and (min-width: 768px) {
+    .footer-img {
+        max-width: 45%;
+    }
 }

@@ -42,22 +42,51 @@ class AdminController extends Controller
     }
     public function index(){
         $count_number_of_invitations = Invitation::count();
+        $count_number_of_sent_invitations = Invitation::where('is_sent', '=', 1)->count();
         $count_number_of_akad_guests = Invitation::where('invitation_type', '=', 'Akad')->sum('num_of_guests');
         $count_number_of_guests = Invitation::sum('num_of_guests');
         $count_number_of_confirmed_guests = Rsvp::sum('num_of_guests');
         $count_number_of_confirmed_invitations = Rsvp::count();
         $count_number_of_attended_guests = Attendance::sum('number_of_guests');
+        $id_guest_akad = Invitation::select('id')->where('invitation_type', '=', 'Akad')->get();
+        $count_number_of_attended_akad = Rsvp::whereIn('invitation_id', $id_guest_akad)->sum('num_of_guests');
+        $id_guests = Rsvp::select('invitation_id')->distinct()->get();
+        $guests = $this->invitation_service->get_unconfirmed_guest_id($id_guests);
+        $count_of_unconfirmed_guests = sizeof($guests);
+
         return view('admin.index', [
             'count_number_of_invitations' => $count_number_of_invitations,
+            'count_number_of_sent_invitations' => $count_number_of_sent_invitations,
             'count_number_of_akad_guests' => $count_number_of_akad_guests,
             'count_number_of_guests'=> $count_number_of_guests,
             'count_number_of_attended_guests' => $count_number_of_attended_guests,
             'count_number_of_confirmed_guests' => $count_number_of_confirmed_guests,
+            'count_number_of_attended_akad' => $count_number_of_attended_akad,
             'count_number_of_confirmed_invitations' => $count_number_of_confirmed_invitations,
+            'count_of_unconfirmed_guests' => $count_of_unconfirmed_guests,
+
         ]);
     } 
-    public function getAllGuests() {
-        $guests = $this->invitation_service->get();
+    public function getAllGuests(Request $request) {
+        if(!isset($request->sent)) {
+            if(isset($request->confirmed)) {
+                $id_guests = Rsvp::select('invitation_id')->distinct()->get();
+                $guests = $this->invitation_service->get_unconfirmed_guest_id($id_guests);
+            }
+            else {
+                $guests = $this->invitation_service->get();
+            }
+            
+        }
+        else {
+            $guests = $this->invitation_service->get_invitation_by_sent_status($request->sent);
+        }
+        return view('admin.invitation-list', [
+            'guests' => $guests,
+        ]);
+    }
+    public function getAkadGuests() {
+        $guests = $this->invitation_service->ged_akad_guests();
         return view('admin.invitation-list', [
             'guests' => $guests,
         ]);
@@ -86,8 +115,20 @@ class AdminController extends Controller
 
         return;
     }
-    public function getAllRsvps() {
-        $rsvps = $this->rsvp_service->get_all_rsvps();
+    public function getAllRsvps(Request $request) {
+        if(isset($request->type)) {
+            if($request->type == 'akad') {
+                $invitation_id = $this->invitation_service->get_akad_guests_id();
+                $rsvps = $this->rsvp_service->get_attended_rsvp_by_invitation_id($invitation_id);
+            }
+            else {
+                $invitation_id = $this->invitation_service->get_all_guests_id();
+                $rsvps = $this->rsvp_service->get_attended_rsvp_by_invitation_id($invitation_id);
+            }
+        }
+        else {
+            $rsvps = $this->rsvp_service->get_all_rsvps();
+        }
         return view('admin.rsvp-list', [
             'rsvps' => $rsvps,
         ]);
@@ -102,9 +143,11 @@ class AdminController extends Controller
     }
     public function getAttendanceList(Request $request) {
         $guest = $this->attendanceService->get();
+        $sum_num_of_guests = Attendance::sum('number_of_guests');
 
         return view('admin.attendance', [
             'guests' => $guest,
+            'sum_num_of_guests'=> $sum_num_of_guests,
         ]);
     }
     public function checkGuests(Request $request) {
@@ -163,5 +206,31 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back();
+    }
+    public function getGuestName() {
+        try {
+            $data = Attendance::orderByDesc('created_at')->limit(1)->first();
+            $text = $data->invitation->name;
+            
+            $jsonResponse = [
+                'count' => 1,
+                'data' => $text
+            ];
+
+            // Return the JSON response
+            return response()->json($jsonResponse);
+        }
+        catch (\Exception $e) {
+            $jsonResponse = [
+                'count' => 0,
+                'data' => ''
+            ];
+
+            // Return the JSON response
+            return response()->json($jsonResponse);
+        }
+    }
+    public function displayGuestName() {
+        return view('admin.welcome');
     }
 }

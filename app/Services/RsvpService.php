@@ -22,6 +22,19 @@ class RsvpService extends Service
         $group_by = [];
         return $this->first($fields, $joins, $conditions, $order_by, false, $group_by);
     }
+    public function get_attended_rsvp_by_invitation_id($invitation_id) {
+        $fields = [
+            '*'
+        ];
+        $joins = [];
+        $conditions = [
+            ['whereIn', 'invitation_id', $invitation_id],
+            ['where', 'response', '=', 'Yes'],
+        ];
+        $order_by = [];
+        $group_by = [];
+        return $this->get($fields, $joins, $conditions, $order_by, false, $group_by);
+    }
     public function get_all_rsvps() {
         $fields = [
             '*'

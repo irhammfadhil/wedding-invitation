@@ -107,6 +107,10 @@
       <a href="{{route('invitation-uuid-open', ['name' => $name])}}" id="open-popup"
         class="add-to-calendar btn btn-lg btn-primary button-open-invitation sqs-block-button btn-responsive"><i
           class="fas fa-envelope"></i> Buka Undangan</a>
+        <br>
+      <a href="{{route('user-qr-code', ['id' => $id])}}" id="open-popup"
+        class="add-to-calendar-2 btn btn-lg btn-primary button-open-invitation sqs-block-button btn-responsive"><i
+          class="fas fa-th-large"></i> QR Code</a>
     </div>
   </div>
   <div id="preloader"></div>

@@ -77,7 +77,7 @@
       #flowers-top-1 {
         width: 300px;
         left: -20%;
-        top: 75%;
+        top: 70%;
       }
 
       #flowers-top-2 {
@@ -206,7 +206,7 @@
     <section id="about" class="about section-bg">
       <div class="container text-center">
         <h3 class="text-center save-the-date" data-aos="zoom-in" data-aos-delay="100">SAVE THE DATE</h3>
-        <img class="text-center img-fluid bride-nick-name" src="{{asset('name.png')}}" data-aos="zoom-in"
+        <img class="text-center img-fluid bride-nick-name bride-nick-name-front" src="{{asset('name.png')}}" data-aos="zoom-in"
           data-aos-delay="400">
         <h4 class="text-center wedding-date" data-aos="zoom-in" data-aos-delay="600">Minggu, 14 April 2024</h4>
         <div class="row text-center box-countdown-outer" data-aos="zoom-in" data-aos-delay="800">
@@ -282,12 +282,12 @@
           <p data-aos="zoom-in" data-aos-delay="250" class="invitation-description">Maha suci Allah SWT, yang telah
             menciptakan makhluk-Nya berpasang-pasangan.<br><br>Ya Allah, dengan mengharap ridlo dan rahmat-Mu
             perkenankanlah kami menikahkan putra-putri kami:</p>
-          <h2 data-aos="zoom-in" data-aos-delay="500" class="bride-full-name">Irham Muhammad Fadhil</h2>
+          <img src="{{asset('name-groom.png')}}" data-aos="zoom-in" data-aos-delay="500" class="bride-full-name img-fluid bride-nick-name-front">
           <p data-aos="zoom-in" data-aos-delay="750">Putra dari Bapak R. Sri Kuncoro Laksono Wedi<br>&</br>Ibu Titi
             Zhahida</p>
-          <img data-aos="zoom-in" data-aos-delay="1000" class="text-center img-fluid bride-nick-name"
-            src="{{asset('name.png')}}" style="max-width: 50%;">
-          <h2 data-aos="zoom-in" data-aos-delay="1250" class="bride-full-name">Rosy Indah Permatasari</h2>
+          <img data-aos="zoom-in" data-aos-delay="1000" class="text-center img-fluid bride-nick-name bride-nick-name-front"
+            src="{{asset('name.png')}}">
+          <img src="{{asset('name-bride.png')}}" data-aos="zoom-in" data-aos-delay="1250" class="bride-full-name img-fluid bride-nick-name-front">
           <p data-aos="zoom-in" data-aos-delay="1500">Putri dari Bapak H.R. Soenardjo (alm)<br>&<br>Ibu Roelly
             Prastyawati</p>
         </div>
@@ -319,31 +319,64 @@
             diselenggarakan pada:</p>
           @endif
           @if($data_invitation->invitation_type == 'Akad')
-          <div class="row" style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="500">
-            <div class="col-4 wedding-date-row">
-              <h3>Akad Nikah</h3>
-              <h3>08:00 - 10:00 WIB</h3>
-            </div>
-            <div class="col-4 wedding-date-row">
-              <h3>Minggu</h3>
-              <h1>14</h1>
-              <h1>April 2024</h1>
-            </div>
-            <div class="col-4 wedding-date-row">
-              <h3>Resepsi</h3>
-              <h3>11:00 - 13:00 WIB</h3>
-            </div>
+          <div class="pc-view-date">
+            {{--<div class="row" style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="500">
+                <div class="col-lg-4 wedding-date-row">
+                  <img data-aos="zoom-in" data-aos-delay="500" class="text-center img-fluid date-image-2"
+                src="{{asset('akad.png')}}">
+                </div>
+                <div class="col-lg-4 wedding-date-row">
+                  <img data-aos="zoom-in" data-aos-delay="500" class="text-center img-fluid date-image"
+                src="{{asset('date.png')}}">
+                </div>
+                <div class="col-lg-4 wedding-date-row">
+                  <img data-aos="zoom-in" data-aos-delay="500" class="text-center img-fluid date-image-2"
+                src="{{asset('resepsi.png')}}">
+                </div>
+              </div>--}}
+              <div class="row" style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="500">
+                <div class="col-4 wedding-date-row">
+                  <h3>Akad Nikah</h3>
+                  <h3>07:30 - 09:00 WIB</h3>
+                </div>
+                <div class="col-4 wedding-date-row">
+                  <h3>Minggu</h3>
+                  <h1>14</h1>
+                  <h1>April 2024</h1>
+                </div>
+                <div class="col-4 wedding-date-row">
+                  <h3>Resepsi</h3>
+                  <h3>10:00 - 12:00 WIB</h3>
+                </div>
+              </div>
+          </div>
+          <div class="mobile-view-date">
+              <div class="row" style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="500">
+                <div class="col-4 wedding-date-row">
+                  <h3>Akad Nikah</h3>
+                  <h3>07:30 - 09:00 WIB</h3>
+                </div>
+                <div class="col-4 wedding-date-row">
+                  <h3>Minggu</h3>
+                  <h1>14</h1>
+                  <h1>April 2024</h1>
+                </div>
+                <div class="col-4 wedding-date-row">
+                  <h3>Resepsi</h3>
+                  <h3>10:00 - 12:00 WIB</h3>
+                </div>
+              </div>
           </div>
           @else
           <div class="row" style="margin-top: 2rem;" data-aos="zoom-in" data-aos-delay="500">
             <div class="col-6 wedding-date-row">
-              <h3>Minggu</h3>
-              <h1>14</h1>
-              <h1>April 2024</h1>
+                <h3>Minggu</h3>
+                <h1>14</h1>
+                <h1>April 2024</h1>
             </div>
             <div class="col-6 wedding-date-row">
-              <h3>Resepsi</h3>
-              <h3>11:00 - 13:00 WIB</h3>
+                <h3>Resepsi</h3>
+                <h3>10:00 - 12:00 WIB</h3>
             </div>
           </div>
           @endif
@@ -362,7 +395,7 @@
           <p data-aos="zoom-in" data-aos-delay="1750">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
           <p class="small" style="color: #000;" data-aos="zoom-in" data-aos-delay="2000">Kami yang berbahagia</p>
           <p class="small" data-aos="zoom-in" data-aos-delay="2250" class="bride-full-name"><i>Kel. R. Sri Kuncoro Laksono
-              Wedi<br>Kel. H.R. Soenardjo, S.H (Alm)<br>Irham dan Rosy</i></p>
+              Wedi<br>Kel. H.R. Soenardjo (Alm)<br>Irham dan Rosy</i></p>
         </div>
       </div>
     </section><!-- End About Section -->
@@ -395,11 +428,11 @@
             </div>
           </div>
           <br>
-          <div class="form-group">
+          <div class="form-group" id="number_of_guest_container">
             <label for="name">Jumlah Tamu yang hadir (termasuk Anda)?</label>
             <select id="number_of_guest" name="num_of_guests" class="form-control" required>
-              <option value="">Pilih...</option>
-              @for($i=1;$i<=10;$i++)
+              <option value="0" selected>Pilih...</option>
+              @for($i=0;$i<=10;$i++)
               <option value="{{$i}}">{{$i}} tamu</option>
               @endfor
             </select>
@@ -407,7 +440,7 @@
           <br>
           <div class="form-group">
             <label for="name">Pesan untuk Pengantin</label>
-            <textarea class="form-control" id="message" name="wishes" rows="3" required></textarea>
+            <textarea class="form-control" id="message" name="wishes" rows="3"></textarea>
           </div>
           <br>
           <div class="text-center">
@@ -432,10 +465,12 @@
         <div class="container-wishes-outer" data-aos="zoom-in" data-aos-delay="3750">
           <div class="container-wishes overflow-auto paragraph-wishes" id="container-wishes" style="max-height: 512px; overflow: auto;">
             @foreach($rsvps as $rsvp)
+            @if($rsvp->wishes)
             <p><b>{{$rsvp->invitation->name}}</b></p>
             <small>{{ \Carbon\Carbon::parse($rsvp->created_at)->diffForHumans() }}</small>
             <p>{{$rsvp->wishes}}</p>
             <hr>
+            @endif
             @endforeach
           </div>
         </div>
@@ -487,6 +522,22 @@
     });
   </script>
   <script>
+    $('#response1').change(function(){
+        if($(this).is(':checked')){
+            // Do something when "Maaf, saya tidak bisa" is selected
+            $("#number_of_guest_container").hide();
+            $("number_of_guest").val(0);
+            // You can replace the alert with any action you want to perform
+        }
+    });
+    $('#response2').change(function(){
+        if($(this).is(':checked')){
+            // Do something when "Maaf, saya tidak bisa" is selected
+            $("#number_of_guest_container").show();
+            $("number_of_guest").val("");
+            // You can replace the alert with any action you want to perform
+        }
+    });
     // When the form is submitted
     $('#rsvp-form').on('submit', function (e) {
       e.preventDefault(); // Prevent the default form submission

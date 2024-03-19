@@ -35,6 +35,12 @@
                         <p>Daftar Kehadiran</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('display-attendance')}}" class="nav-link{{ request()->routeIs('display-attendance') ? ' nav-active' : '' }}">
+                        <i class="nav-icon fas fa-desktop"></i>
+                        <p>Layar Sapa</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -61,16 +67,28 @@
         background-color: #f4f4f4;
     }
     .bg-1 {
-        background-color: #e2b4bd;
+        background-color: #FFE7E7;
     }
     .bg-2 {
-        background-color: #899a88;
+        background-color: #CAA6A6;
     }
     .bg-3 {
-        background-color: rgba(66, 77, 66, 0.3);
+        background-color: #adbc9f;
     }
     .bg-4 {
-        background-color: #e2a55e;
+        background-color: #fbfada;
+    }
+    .bg-5 {
+        background-color: #B47B84;
+    }
+    .bg-6 {
+        background-color: #C9D7DD;
+    }
+    .bg-7 {
+        background-color: #637A9F;
+    }
+    .bg-8 {
+        background-color: #E8C872;
     }
     .page-item.active .page-link {
         background-color: #b55b5b;

@@ -346,7 +346,8 @@
               }
           });
       });
-      $('.whatsappButton').on('click', function(event) {
+      $('#example1').on('click', '.whatsappButton', function(event) {
+        console.log('clicked');
         event.preventDefault();
         var id = $(this).data('id');
         var url = "{{ route('view-invitation', [':id']) }}";

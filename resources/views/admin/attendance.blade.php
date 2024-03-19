@@ -86,6 +86,33 @@
       <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <!-- small box -->
+              <div class="small-box bg-1">
+                <div class="inner">
+                  <h5>Total Tamu Hadir</h5>
+                  <h3>{{$sum_num_of_guests}}</h3>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <!-- small box -->
+              <div class="small-box bg-2">
+                <div class="inner">
+                  <h5>Waktu saat ini</h5>
+                  <h3 id="current-time"></h3>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+              </div>
+            </div>
+            <!-- ./col -->
+          </div>
           <div class="card">
             <div class="card-header">
               <div class="row">
@@ -271,6 +298,30 @@
       });
     });
   </script>
+  <script>
+      // Function to update the clock
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+    
+        // Ensure two digits for hours, minutes, and seconds
+        hours = ('0' + hours).slice(-2);
+        minutes = ('0' + minutes).slice(-2);
+        seconds = ('0' + seconds).slice(-2);
+    
+        // Display the clock
+        var clockDiv = document.getElementById('current-time');
+        clockDiv.textContent = hours + ':' + minutes + ':' + seconds + ' WIB';
+      }
+    
+      // Call updateClock every second
+      setInterval(updateClock, 1000);
+    
+      // Initial call to updateClock to prevent delay in displaying the clock
+      updateClock();
+   </script>
 </body>
 
 </html>
