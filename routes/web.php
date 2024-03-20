@@ -37,6 +37,7 @@ Route::group(['prefix' => '/admin'], function() {
         Route::delete('/delete/{id}', [AdminController::class, 'deleteInvitation'])->name('delete-invitation');
         Route::get('/mark-as-sent/{id}', [AdminController::class, 'markInvitaitonAsSent'])->name('mark-invitation-as-sent');
         Route::post('/check', [AdminController::class, 'checkGuests'])->name('check-invitation');
+        Route::post('/save-image', [AdminController::class, 'saveImage'])->name('save-image');
     
     });
     Route::prefix('rsvp')->middleware('auth')->group(function () {

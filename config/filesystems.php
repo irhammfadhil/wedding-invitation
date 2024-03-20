@@ -44,6 +44,12 @@ return [
             'throw' => false,
         ],
 
+        'guests' => [
+            'driver' => 'local',
+            'root' => storage_path('app/guests'),
+            'visibility' => 'private',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

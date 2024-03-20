@@ -12,6 +12,7 @@ use App\Services\RsvpService;
 use App\Services\AttendanceService;
 use App\Models\Rsvp;
 use App\Models\Invitation;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -232,5 +233,28 @@ class AdminController extends Controller
     }
     public function displayGuestName() {
         return view('admin.welcome');
+    }
+    public function saveImage(Request $request) {
+        try {
+            $imageData = $request->input('image_data');
+            $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
+            $imageData = base64_decode($imageData);
+    
+            $imageName = 'webcam_image_' . time() . '.jpg';
+            $imagePath = 'public/images/' . $imageName;
+    
+            // Save the image to the filesystem
+            Storage::put($imagePath, $imageData);
+    
+            // Save the image information to the database
+            $image = Attendance::where('invitation_id', '=', $request->id)->first();
+            $image->photos = '/storage/images/'.$imageName;
+            // Add any other fields you have in your images table
+            $image->save();
+    
+            //return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

@@ -28,7 +28,9 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSA5P5Cw5F5z5O5f5RZ" crossorigin="anonymous">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -140,7 +142,7 @@
                       <th class="text-center align-middle" style="width: 15%;">Nama</th>
                       <th class="text-center align-middle">Jumlah Tamu</th>
                       <th class="text-center align-middle">Waktu Masuk</th>
-                      <th class="text-center align-middle">Waktu Pemberian Souvenir</th>
+                      <th class="text-center align-middle">Foto</th>
                       <th class="text-center align-middle" style="width: 15%;">Tindakan</th>
                     </tr>
                   </thead>
@@ -150,9 +152,11 @@
                       <td class="text-center">{{$guest->invitation->name}}</td>
                       <td class="text-center">{{$guest->invitation->num_of_guests}} pax</td>
                       <td class="text-center">{{$guest->created_at}}</td>
-                      <td class="text-center">{{$guest->timestamp_gift}}</td>
+                      <td class="text-center"><img src="{{asset($guest->photos)}}" class="img-fluid"></td>
                       <td class="text-center">
-                        <a href="{{route('attendance-gift', ['id' => $guest->id])}}" class="btn btn-primary">Ambil Souvenir</a>
+                        <a type="button" class="btn btn-primary edit-button mb-4" data-toggle="modal" data-target="#edit-invitation-modal" data-id="{{ $guest->invitation_id }}">
+                          <i class="fas fa-eye"></i>
+                        </a>
                       </td>
                     </tr>
                     @endforeach
@@ -193,6 +197,40 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <!-- Add a save button or any other buttons you need in the modal footer -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-lg" id="edit-invitation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <form>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Undangan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            @csrf
+            <input type="hidden" name="id" id="id-edit">
+            <input type="hidden" name="uuid" id="uuid-edit">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nama</label>
+              <input type="text" name="name" id="name-edit" class="form-control" required readonly>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Webcam</label><br>
+              <video autoplay="true" id="video-webcam">
+                  Browsermu tidak mendukung bro, upgrade donk!
+              </video>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" id="capture-btn" type="submit">Ambil Gambar</button>
             <!-- Add a save button or any other buttons you need in the modal footer -->
           </div>
         </form>
@@ -263,6 +301,7 @@
   <script src="{{asset('admin/dist/js/demo.js')}}"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="{{asset('admin/dist/js/pages/dashboard.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
   <script>
     $(function() {
@@ -270,6 +309,32 @@
     });
   </script>
   <script>
+    $(document).ready(function() {
+      var table = $('#example1').DataTable(); // Initialize DataTable
+      // Event delegation for edit button
+      $('#example1').on('click', '.edit-button', function() {
+          var id = $(this).data('id');
+          var url = "{{ route('view-invitation', [':id']) }}".replace(':id', id);
+          
+          $.ajax({
+              type: 'GET',
+              url: url,
+              dataType: 'json',
+              success: function(data) {
+                  $('#id-edit').val(data.data.id);
+                  $('#uuid-edit').val(data.data.uuid);
+                  $('#name-edit').val(data.data.name);
+                  $('#address-edit').val(data.data.address);
+                  $('#phone-edit').val(data.data.phone);
+                  $('#invitation-type-edit').val(data.data.invitation_type);
+                  $('#num_of_guests-edit').val(data.data.num_of_guests);
+              },
+              error: function() {
+                  alert('Error fetching data');
+              }
+          });
+      });
+    });
     $(document).ready(function() {
       // Add event listener for form submission
       $('#new-invitation-modal form').submit(function(event) {
@@ -322,6 +387,76 @@
       // Initial call to updateClock to prevent delay in displaying the clock
       updateClock();
    </script>
+   <script type="text/javascript">
+    var video = document.querySelector("#video-webcam");
+
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+    if (navigator.getUserMedia) {
+        navigator.getUserMedia({ video: true }, handleVideo, videoError);
+    }
+
+    function handleVideo(stream) {
+        video.srcObject = stream;
+    }
+
+    function videoError(e) {
+        alert("Izinkan menggunakan webcam untuk demo!");
+    }
+
+    document.getElementById('capture-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        var canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        var context = canvas.getContext('2d');
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        var imageData = canvas.toDataURL('image/jpeg');
+        var id = $("#id-edit").val();
+
+        // Send image data to Laravel backend
+        saveImage(id, imageData);
+    });
+
+    function saveImage(id, imageData) {
+        // Send image data to Laravel backend using AJAX
+        var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        $.ajax({
+            url: "{{route('save-image')}}",
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            data: { id: id, 
+              image_data: imageData },
+            success: function(response) {
+              Swal.fire({
+                  title: 'Success',
+                  text: 'Image saved successfully!',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      // If user clicks OK, refresh the page
+                      location.reload();
+                  }
+              });
+            },
+            error: function(xhr, status, error) {
+              Swal.fire({
+                title: 'Error',
+                text: 'Error saving image',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                    location.reload();
+                  }
+              });
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
